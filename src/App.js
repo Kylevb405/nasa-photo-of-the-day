@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import Card from './Components/Card/Card'
-import axios from 'axios'
+import Card from './Components/Card/Card';
+import axios from 'axios';
+
+// import {url, title, explanation} from './Components/Nasadata'
+
+// import './Components/Nasadata'
 
 
 // https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY
-
-
 
 function App() {
 
@@ -14,12 +16,14 @@ function App() {
   const [url, setUrl] = useState();
   const [title, setTitle] = useState();
   const [explanation, setExplanation] = useState();
+
     
   const getData = useEffect(() => {
       
-      axios.get('https://api.nasa.gov/planetary/apod?date=2020-11-04&api_key=ZdjlMSkdULLZfaN17x6mvNVNp77501P1xjfEM53K')
+      axios.get('https://api.nasa.gov/planetary/apod?api_key=ZdjlMSkdULLZfaN17x6mvNVNp77501P1xjfEM53K')
       .then( res => {
           
+          console.log(res);
           console.log(res.data);
           console.log(res.data.url);
 
@@ -32,10 +36,8 @@ function App() {
           setExplanation(dataExplain)
           
       })
-      .catch( err => {
-          console.log(err);
-      })
-  }, [])
+      .catch( err => {console.log(err);})
+}, [])
   
   return (
     <div className="App">
